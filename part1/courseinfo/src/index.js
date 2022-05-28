@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+//I had an error importing only 'react-dom', I had to add it as 'react-dom/client'
+import ReactDOM from 'react-dom/client' 
 
 const Header = (props) => {
   return(
@@ -78,5 +79,6 @@ const App = () => {
   )
 }
 
+// I corrected the render since it generated an error in the console for the version
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(<App />)
