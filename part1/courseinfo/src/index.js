@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client'
 const Header = (props) => {
   const newData = props.data
   console.log('Header')
-  console.log(newData)
+  console.log({newData})
   return(
     <>
       <h1>{newData}</h1>
@@ -16,7 +16,7 @@ const Header = (props) => {
 const Content = (props) => {
   const newData = props.data
   console.log('Content')
-  console.log(newData)
+  console.log({newData})
 
   return(
     <>
@@ -37,7 +37,8 @@ const Content = (props) => {
 }
 
 const Part = (props) => {
-  // console.log(props)
+  console.log('Part')
+  console.log(props)
   return(
     <>
       <p>
@@ -51,7 +52,7 @@ const Total = (props) => {
   // console.log(props.data[0])
   const newData = props.data
   console.log('Total')
-  console.log(newData)
+  console.log({newData})
 
   return(
     <>

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+const Title = ({props}) => {
+  return(
+    <h1>{props}</h1>
+  )
+}
+
 const Buttons = ({onClick, text}) => {
    return (
     <>
@@ -8,16 +14,23 @@ const Buttons = ({onClick, text}) => {
    )
 }
 
-const Display = ({props, name}) => {
-  console.log(name)
-  return(
-    <>
-      <p>{name} {props}</p>
-    </>
-  )
+const Display = ({props, name, operator}) => {
+    return(
+      <>
+        <p>{name} {props} {operator}</p>
+      </>
+   )
+  
+  
 }
 
+
 const App =() => {
+
+  const TitleProps = {
+    title: 'Give feedback', 
+    subTitle:'Statistics'
+  }
 
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -35,9 +48,13 @@ const App =() => {
     setBad(bad + 1)
   }
 
+  const all = good + neutral + bad
+  const average = ((good - bad) / 3) / 3
+  const positive = (good * 100) / all
+
   return (
       <>
-        <h1>Give feedback</h1>
+        <Title props={TitleProps.title}/>
         <Buttons 
             onClick={handleGoodClicks} 
             text='Good' />
@@ -47,10 +64,13 @@ const App =() => {
         <Buttons 
             onClick={handleBadClicks} 
             text='Bad'/>
-        <h1>Statistics</h1>
-        <Display props = {good} name='Good'/>
-        <Display props = {neutral} name='Neutral'/>
-        <Display props = {bad} name='Bad'/>
+        <Title props={TitleProps.subTitle}/>
+        <Display props = {good} name='Good: '/>
+        <Display props = {neutral} name='Neutral: '/>
+        <Display props = {bad} name='Bad: '/>
+        <Display props= {all} name='All: '/>
+        <Display props= {average} name='Average: '/>
+        <Display props= {positive} name='Positive: ' operator={'%'} />
       </>
   );
 }
