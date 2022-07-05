@@ -14,14 +14,20 @@ const Buttons = ({onClick, text}) => {
    )
 }
 
-const Display = ({props, name, operator}) => {
+const Display = ({props, name}) => {
     return(
       <>
-        <p>{name} {props} {operator}</p>
+        <p>{name} {props}</p>
       </>
    )
-  
-  
+}
+
+const Statistics = ({props, name, operator}) => {
+     return(
+        <>
+          <p>{name} {props} {operator}</p>
+        </>
+     ) 
 }
 
 
@@ -55,22 +61,19 @@ const App =() => {
   return (
       <>
         <Title props={TitleProps.title}/>
-        <Buttons 
-            onClick={handleGoodClicks} 
-            text='Good' />
-        <Buttons 
-            onClick={handleNeutralClicks} 
-            text='Neutral'/>
-        <Buttons 
-            onClick={handleBadClicks} 
-            text='Bad'/>
+        <Buttons onClick={handleGoodClicks} text='Good' />
+        <Buttons onClick={handleNeutralClicks} text='Neutral'/>
+        <Buttons onClick={handleBadClicks} text='Bad'/>
         <Title props={TitleProps.subTitle}/>
         <Display props = {good} name='Good: '/>
         <Display props = {neutral} name='Neutral: '/>
         <Display props = {bad} name='Bad: '/>
-        <Display props= {all} name='All: '/>
-        <Display props= {average} name='Average: '/>
-        <Display props= {positive} name='Positive: ' operator={'%'} />
+        <Statistics props= {all} name='All: '/>
+        <Statistics props= {average} name='Average: '/>
+        <Statistics 
+            props= {positive} 
+            name='Positive: ' 
+            operator={'%'} />
       </>
   );
 }
