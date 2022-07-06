@@ -1,0 +1,5 @@
+.table--td {
+    box-sizing: border-box;
+    width: 70px;
+    text-align: left;
+}

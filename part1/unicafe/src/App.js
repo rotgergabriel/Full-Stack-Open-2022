@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Statistic.css'
 
 const Title = ({props}) => {
   return(
@@ -14,10 +15,17 @@ const Buttons = ({onClick, text}) => {
    )
 }
 
-const Statistic = ({props, name, operator}) => {
+const Statistic = ({props, name}) => {
     return(
       <>
-        <p>{name} {props} {operator}</p>
+        <table>
+          <tbody>
+            <tr>
+              <td className="table--td">{name}</td>
+              <td className="table--td">{props}</td>
+            </tr>
+          </tbody>
+        </table>
       </>
    )
 }
@@ -33,7 +41,7 @@ const Statistics = ({
 
     const textOne = 'No feedback given'
 
-    if((all === 0)) {
+    if(all === 0) {
       return (
         <div>
             {textOne}
@@ -42,12 +50,12 @@ const Statistics = ({
     }
      return(
         <>
-          <Statistic props = {good} name='Good: '/>
-          <Statistic props = {neutral} name='Neutral: '/>
-          <Statistic props = {bad} name='Bad: '/>
-          <Statistic props = {all} name='All: '/>
-          <Statistic props = {average} name='Average: '/>
-          <Statistic props = {positive} name='Positive: ' operator={'%'}/>
+          <Statistic props = {good} name='Good' />
+          <Statistic props = {neutral} name='Neutral' />
+          <Statistic props = {bad} name='Bad' />
+          <Statistic props = {all} name='All' />
+          <Statistic props = {average} name='Average'/>
+          <Statistic props = {positive + '%'} name='Positive' />
         </>
      )
 }
@@ -77,8 +85,8 @@ const App =() => {
   }
 
   const all = good + neutral + bad
-  const average = ((good - bad) / 3) / 3
-  const positive = (good * 100) / all
+  const average = (((good - bad) / 3) / 3).toFixed(1)
+  const positive = ((good * 100) / all).toFixed(1)
 
   return (
       <>
